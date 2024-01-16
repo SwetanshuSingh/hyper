@@ -1,7 +1,13 @@
+"use client"
 import Image from "next/image";
 import LoginForm from "./components/LoginForm";
+import { useState } from "react";
+import SignupForm from "./components/SignupForm";
 
 const Home = () => {
+
+  const [isLoginFormActive, setIsLoginFormActive] = useState(false);
+
   return (
     <div className="bg-[#1E2126] min-h-full flex flex-col justify-center items-center gap-8 text-[#EFF7F6]">
       <div>
@@ -18,7 +24,7 @@ const Home = () => {
       </div>
 
       <div className="bg-[#16191C] w-[400px] h-[550px] rounded-lg">
-        <LoginForm />
+        {isLoginFormActive ? <LoginForm setIsLoginFormActive={setIsLoginFormActive} /> : <SignupForm setIsLoginFormActive={setIsLoginFormActive} />}
       </div>
     </div>
   );
